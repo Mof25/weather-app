@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import SearchEntry from './searchEntry';
 import WeatherLocation from "./weatherLocation";
 import { Card } from 'antd';

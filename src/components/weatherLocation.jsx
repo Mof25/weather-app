@@ -4,14 +4,25 @@ import { Avatar } from 'antd';
 import "./weatherLocation.css";
 import { ArrowRightOutlined } from '@ant-design/icons';
 import keys from "./../keys";
+import ErrorHandler from "./errorHandler";
+import { Spin } from 'antd';
+
+
 const { Title } = Typography;
 
+
+const LoadingHandler = ({ isLoading }) => {
+    return isLoading ? <Spin tip="Loading..." /> : null;
+}
 
 const WeatherLocation = ({ weatherLocations }) => {
 
     const [weatherData, setWeatherData] = useState({});
+    const [apiWeatherError, setApiWeatherError] = useState({});
+    const [isLoading, setIsLoading] = useState(false);
 
     const getWeather = async (city) => {
+        setIsLoading(true);
         try {
             return fetch(
                 `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${keys.API_KEY}&units=metric`,
@@ -20,13 +31,9 @@ const WeatherLocation = ({ weatherLocations }) => {
                     return result.json();
                 }
                 else {
-                    return { success: false, error: `Something went wrong : ${result.status} ${result.statusText}` }
+                    setApiWeatherError({ status: result.status, statusText: result.statusText })
                 }
-            }).then(async response => {
-                if (response.data)
-                    return await response;
-                return response;
-            })
+            }).finally(() => setIsLoading(false))
         } catch (ex) {
             return { error: ex.message }
         }
@@ -61,7 +68,7 @@ const WeatherLocation = ({ weatherLocations }) => {
                         <Avatar src={icon} className="avatar-temperature" />
                     )}
                 </div>
-                <Title level={4}>{`Feels like ${feelsLike}`}&deg;C. {description}.</Title>
+                {feelsLike && <Title level={4}>{`Feels like ${feelsLike}`}&deg;C. {description}.</Title>}
                 {windSpeed > 0 && (
                     <div className="wind-content">
                         <div className="temperature-content">
@@ -84,7 +91,8 @@ const WeatherLocation = ({ weatherLocations }) => {
             <div className="location-header">
                 <Title level={3}>{weatherLocations}</Title>
             </div>
-
+            <ErrorHandler apiError={apiWeatherError} />
+            <LoadingHandler isLoading={isLoading} />
             {showWeather(weatherData)}
 
         </>

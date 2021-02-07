@@ -12,7 +12,7 @@
 /build
 
 # keys
-.keys
+src/keys.js
 
 # misc
 .DS_Store
