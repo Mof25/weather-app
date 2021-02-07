@@ -1,0 +1,31 @@
+
+
+.temperature-content{
+    display: flex;
+}
+
+.avatar-temperature{
+    width: 70px !important;
+    margin-top:0.3rem !important;
+}
+
+.content-line {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.location-header{
+    flex-grow:1
+}
+
+.wind-content{
+    display: flex;
+    align-items: baseline;
+    justify-content: space-evenly;
+}
+
+.arrow-icon{
+    font-size: 16px;
+    margin: 0 0 0.5rem 0.5rem;
+}
