@@ -1,0 +1,13 @@
+
+
+.forecast{
+flex: 1 1 0%;
+text-align: right;
+display: flex !important;
+}
+
+.temperature{
+    display: flex;
+    align-items: baseline;
+    
+}
