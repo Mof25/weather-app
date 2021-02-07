@@ -35,9 +35,7 @@ const WeatherLocation = ({ weatherLocations }) => {
     const getWeather = (city) => {
         setIsLoading(true);
         try {
-            return fetch(
-                `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${keys.API_KEY}&units=metric`,
-            ).then(result => {
+            return fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${keys.API_KEY}&units=metric`).then(result => {
                 if (result.ok) {
                     return result.json();
                 }
@@ -51,9 +49,7 @@ const WeatherLocation = ({ weatherLocations }) => {
     }
 
     const getForecast = (city) => {
-        return fetch(
-            `http://api.openweathermap.org/data/2.5/forecast/?q=${city}&units=metric&APPID=${keys.API_KEY}`
-        )
+        return fetch(`http://api.openweathermap.org/data/2.5/forecast/?q=${city}&units=metric&APPID=${keys.API_KEY}`)
             .then(result => {
                 if (result.ok) {
                     return result.json();
@@ -67,7 +63,7 @@ const WeatherLocation = ({ weatherLocations }) => {
 
     useEffect(() => {
         getWeather(weatherLocations).then(res => setWeatherData(res));
-        getForecast(weatherLocations).then(res => { console.log("res", res); setForecastData(res && res.list.filter(forecast => forecast.dt_txt.match(/09:00:00/))) })
+        getForecast(weatherLocations).then(res => { setForecastData(res && res.list.filter(forecast => forecast.dt_txt.match(/09:00:00/))) })
         console.log("forecastData", forecastData)
     }, [weatherLocations])
 
