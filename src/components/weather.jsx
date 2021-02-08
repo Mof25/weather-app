@@ -46,7 +46,7 @@ const Weather = (props) => {
 }
 
 Weather.propTypes = {
-    Weather: PropTypes.object.isRequired,
+    props: PropTypes.object,
 };
 
 export default Weather;

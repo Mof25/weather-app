@@ -21,7 +21,7 @@ function useStickyState(defaultValue, key) {
 
 const Weather = ({ }) => {
 
-    const [weatherLocations, setWeatherLocations] = useStickyState([], 'locations')
+    const [weatherLocations, setWeatherLocations] = useStickyState(['Lisbon'], 'locations')
 
     const handleAddClick = () => {
         setWeatherLocations([...weatherLocations, ""]);
