@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import { Typography, Divider, Spin, Result } from 'antd';
 import keys from "./../keys";
 import Forecast from './forecast';
@@ -79,5 +80,9 @@ const WeatherLocation = ({ weatherLocations }) => {
         </>
     )
 }
+
+WeatherLocation.propTypes = {
+    weatherLocations: PropTypes.string.isRequired,
+};
 
 export default WeatherLocation;

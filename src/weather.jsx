@@ -35,7 +35,7 @@ const Weather = ({ }) => {
     }
 
     return (
-        <div>
+        <div className='weather-main'>
             <div className='card'>
                 <Row gutter={[24, 48]}>
                     {weatherLocations.map((location, index) => (

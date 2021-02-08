@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import moment from 'moment';
 import { Typography, List, Avatar } from 'antd';
 
@@ -33,6 +34,10 @@ const Forecast = (props) => {
         />
     );
 }
+
+Forecast.propTypes = {
+    Weather: PropTypes.object.isRequired,
+};
 
 export default Forecast;
 

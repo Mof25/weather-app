@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from "prop-types";
 import SearchEntry from './searchEntry';
 import WeatherLocation from "./weatherLocation";
 import { Card, Button } from 'antd';
@@ -17,5 +18,11 @@ const WeatherCard = ({ location, onUpdate, onDelete }) => {
     )
 
 }
+
+WeatherCard.propTypes = {
+    location: PropTypes.string.isRequired,
+    onDelete: PropTypes.func.isRequired,
+    onUpdate: PropTypes.func.isRequired,
+};
 
 export default WeatherCard;

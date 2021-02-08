@@ -1,6 +1,8 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { ArrowRightOutlined } from '@ant-design/icons';
 import { Typography, Avatar } from 'antd';
+
 
 const { Title } = Typography;
 
@@ -42,5 +44,9 @@ const Weather = (props) => {
         </>
     )
 }
+
+Weather.propTypes = {
+    Weather: PropTypes.object.isRequired,
+};
 
 export default Weather;

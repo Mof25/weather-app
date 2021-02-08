@@ -3,15 +3,21 @@
 html,body {
     padding: 0px;
     margin: 0px;
+    /* background-image: url("../src/imgs/rain.jpg"); */
 }
 
 h1,h2,h3,h4,h5,h6 {
     font-family: 'Roboto', sans-serif;
 }
 
+.weather-main {
+    min-height: 100vh;
+    height: auto;
+    background-image: url("../src/imgs/rain.jpg");
+}
+
 .card {
     padding: 2rem 5rem 0 5rem;
-    background-image: url("../src/imgs/rain.jpg");
 }
 
 .button-remove {
@@ -23,7 +29,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 @media screen and (min-width: 992px) {
-    .card{
+    .weather-main{
         background-repeat: none;
         background-position: center top;
         background-size: cover;
