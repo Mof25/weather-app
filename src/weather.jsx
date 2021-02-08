@@ -6,21 +6,33 @@ import { Button, Container } from 'react-floating-action-button';
 import { PlusOutlined } from '@ant-design/icons';
 
 
-const Weather = () => {
+function useStickyState(defaultValue, key) {
+    const [value, setValue] = React.useState(() => {
+        const stickyValue = window.localStorage.getItem(key);
+        return stickyValue !== null
+            ? JSON.parse(stickyValue)
+            : defaultValue;
+    });
+    React.useEffect(() => {
+        window.localStorage.setItem(key, JSON.stringify(value));
+    }, [key, value]);
+    return [value, setValue];
+}
 
-    const [weatherLocations, setWeatherLocations] = useState([]);
+const Weather = ({ }) => {
 
-    const onDelete = (i) => {
-        const newWeatherLocations = weatherLocations;
-        const index = newWeatherLocations.indexOf(i);
-        newWeatherLocations.splice(index, 1);
-        setWeatherLocations(newWeatherLocations);
+    const [weatherLocations, setWeatherLocations] = useStickyState([], 'locations')
+
+    const handleAddClick = () => {
+        setWeatherLocations([...weatherLocations, ""]);
     }
 
-    const handleAddClick = () => setWeatherLocations([...weatherLocations, ""]);
-
-    const updateHandler = (index, updatedLocation) =>
-        setWeatherLocations(weatherLocations.map((location, locationIndex) => (locationIndex === index ? updatedLocation : location)));
+    const onDelete = index => {
+        setWeatherLocations(weatherLocations.filter(el => el !== weatherLocations[index]))
+    }
+    const updateHandler = (index, newValue) => {
+        setWeatherLocations(weatherLocations.map((location, indexLocation) => { return indexLocation == index ? newValue : location; }))
+    }
 
     return (
         <div className='weather-main'>
@@ -31,8 +43,8 @@ const Weather = () => {
                         <Col span={6} key={index}>
                             <WeatherCard
                                 location={location}
-                                onUpdate={updateHandler(index)}
-                                onDelete={onDelete(index)}
+                                onUpdate={city => updateHandler(index, city)}
+                                onDelete={() => onDelete(index)}
                             />
                         </Col>
                     ))}
@@ -40,10 +52,9 @@ const Weather = () => {
             </div>
             <Container>
                 <Button
-                    tooltip="The big plus button!"
-                    icon="fas fa-plus"
+                    onClick={() => handleAddClick()}
                     rotate={true}
-                    onClick={handleAddClick} >
+                >
                     <PlusOutlined />
                 </Button>
             </Container>

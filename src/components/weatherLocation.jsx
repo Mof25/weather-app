@@ -64,7 +64,6 @@ const WeatherLocation = ({ weatherLocations }) => {
     useEffect(() => {
         getWeather(weatherLocations).then(res => setWeatherData(res));
         getForecast(weatherLocations).then(res => { setForecastData(res && res.list.filter(forecast => forecast.dt_txt.match(/09:00:00/))) })
-        console.log("forecastData", forecastData)
     }, [weatherLocations])
 
     return (

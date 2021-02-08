@@ -7,8 +7,6 @@ import 'antd/dist/antd.css';
 
 const WeatherCard = ({ location, onUpdate, onDelete }) => {
 
-    console.log("weatherLocations", location)
-
     return (
         <Card className='card-main' >
             {location ? <WeatherLocation weatherLocations={location} /> : <SearchEntry onUpdate={onUpdate} />}
