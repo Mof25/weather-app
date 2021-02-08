@@ -1,21 +1,84 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
-html,body{
+html,body {
     padding: 0px;
     margin: 0px;
 }
 
-h1,h2,h3,h4,h5,h6{
+h1,h2,h3,h4,h5,h6 {
     font-family: 'Roboto', sans-serif;
 }
 
-.weather-main{
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    height: 100vh;  
+.card {
+    padding: 2rem 5rem 0 5rem;
+    background-image: url("../src/imgs/rain.jpg");
 }
 
-.card{
-    padding: 2rem 5rem 0 5rem;
+.button-remove {
+    margin-top:1.5rem !important;
 }
+
+.card-col {
+    margin-bottom: 3rem !important;
+}
+
+@media screen and (min-width: 992px) {
+    .card{
+        background-repeat: none;
+        background-position: center top;
+        background-size: cover;
+    }
+  }
+
+  
+.temperature-content {
+    display: flex;
+}
+
+.avatar-temperature {
+    width: 70px !important;
+    margin-top:0.3rem !important;
+}
+
+.content-line {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.location-header {
+    flex-grow:1
+}
+
+.wind-content {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-evenly;
+}
+
+.arrow-icon {
+    font-size: 16px;
+    margin: 0 0 0.5rem 0.5rem;
+}
+
+.card-main {
+    display: "flex";
+    flex-direction: "column";
+}
+
+.card-content { 
+    flex: 1;
+ }
+
+
+.forecast {
+    flex: 1 1 0%;
+    text-align: right;
+    display: flex !important;
+}
+    
+.temperature {
+    display: flex;
+    align-items: baseline;    
+}
+    

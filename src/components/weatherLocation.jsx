@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Typography, Divider, Spin, Result } from 'antd';
-import "./weatherLocation.css";
 import keys from "./../keys";
 import Forecast from './forecast';
 import Weather from "./weather";

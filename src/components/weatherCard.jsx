@@ -10,8 +10,8 @@ const WeatherCard = ({ location, onUpdate, onDelete }) => {
     return (
         <Card className='card-main' >
             {location ? <WeatherLocation weatherLocations={location} /> : <SearchEntry onUpdate={onUpdate} />}
-            <Button onClick={onDelete} size="small" color="primary">
-                Remove
+            <Button onClick={onDelete} size="small" danger className="button-remove">
+                REMOVE
             </Button>
         </Card>
     )

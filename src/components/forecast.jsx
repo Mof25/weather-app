@@ -1,7 +1,6 @@
 import React from "react";
 import moment from 'moment';
 import { Typography, List, Avatar } from 'antd';
-import './forecast.css'
 
 const { Title } = Typography;
 

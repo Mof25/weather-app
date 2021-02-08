@@ -35,12 +35,11 @@ const Weather = ({ }) => {
     }
 
     return (
-        <div className='weather-main'>
-            Weather App
+        <div>
             <div className='card'>
-                <Row>
+                <Row gutter={[24, 48]}>
                     {weatherLocations.map((location, index) => (
-                        <Col span={6} key={index}>
+                        <Col sm={{ span: 20 }} md={{ span: 16 }} lg={{ span: 12 }} xl={{ span: 8 }} xxl={{ span: 6 }} key={index} className="card-col">
                             <WeatherCard
                                 location={location}
                                 onUpdate={city => updateHandler(index, city)}
